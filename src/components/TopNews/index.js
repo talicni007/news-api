@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import NewsTile from '../NewsTile';
+import NewsList from '../NewsList';
 import { fetchTopNews } from '../../fetch';
 
 function TopNews({ country }) {
@@ -18,9 +18,7 @@ function TopNews({ country }) {
     },[country]);
 
     return (
-        <>
-        {newsData.map((news, index) => <NewsTile key={index} news={news} />)}
-        </>
+        <NewsList news={newsData} />
     )
 }
 
