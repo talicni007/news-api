@@ -1,6 +1,6 @@
 import React from 'react';
 import NewsTile from '../NewsTile';
-
+import './style.scss';
 
 function NewsList({ news }) {
     const renderNews = () => {
