@@ -24,7 +24,7 @@ function App() {
       <Navigation handleCountryChange={handleCountryChange} country={country} />
       <Switch>
         <Route path="/" exact><TopNews country={country}/></Route>
-        <Route path="/categories" component={Categories} />
+        <Route path="/categories"><Categories country={country} /></Route>
         <Route path="/search" component={Search} />
         <Route path="/news-detail" component={NewsDetail} />
       </Switch>
