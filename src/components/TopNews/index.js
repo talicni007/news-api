@@ -18,9 +18,14 @@ function TopNews({ country }) {
 		})();
 	}, [country]);
 
+	const getTitle = () => {
+		return `Top news for ${country === 'gb' ? 'Great Britan' : 'USA'}:`;
+	}
+
 	return (
 		<div className="top-news">
 			<div className="container">
+				<h1 className="top-news__title">{getTitle()}</h1>
 				<NewsList news={newsData} />
 			</div>
 		</div>
