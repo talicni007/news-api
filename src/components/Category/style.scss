@@ -1,0 +1,36 @@
+@import "../../styles/variables";
+
+.category__slider {
+    padding: 0 30px;
+    position: relative;
+}
+
+.swiper-slide {
+    height: auto;
+    max-height: 100%;
+    .news-tile {
+        height: 100%;
+        margin-bottom: 0;
+    }
+}
+
+.category__btn {
+    width: 15px;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    transition: color $trans;
+    cursor: pointer;
+
+    &:hover {
+        color: $blue;
+    }
+
+    &--right {
+        right: 0;
+    }
+
+    &--left {
+        left: 0;
+    }
+}
