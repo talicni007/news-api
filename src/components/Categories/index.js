@@ -1,12 +1,16 @@
 import React from 'react';
 import Category from '../Category';
+import './style.scss';
 
 function Categories({ country }) {
 	const categories = ['entertainment', 'general', 'health', 'science', 'sport', 'technology'];
 	return (
 		<div className="categories">
 			<div className="container">
-				{categories.map((cat, index) => <Category category={cat} country={country} key={index} />)}
+				<h1 className="categories__title">Top 5 news by categories from {country}</h1>
+				<div className="categories__wrap">
+					{categories.map((cat, index) => <Category category={cat} country={country} key={index} />)}
+				</div>
 			</div>
 		</div>
 	)
