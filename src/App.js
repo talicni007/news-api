@@ -25,7 +25,7 @@ function App() {
       <Switch>
         <Route path="/" exact><TopNews country={country}/></Route>
         <Route path="/categories"><Categories country={country} /></Route>
-        <Route path="/search" component={Search} />
+        <Route path="/search"><Search country={country} /></Route>
         <Route path="/news-detail" component={NewsDetail} />
       </Switch>
     </Router>

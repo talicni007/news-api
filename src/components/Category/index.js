@@ -9,6 +9,7 @@ import './style.scss';
 
 function Category({category, country}) {
     const [news, setNews] = useState([]);
+    const [message, setMessage] = useState('');
     const slider = useRef(null);
     const right = useRef(null);
     const left = useRef(null);
@@ -16,22 +17,21 @@ function Category({category, country}) {
     useEffect(() => {
         let swiper;
 		(async () => {
+            if (!country) return;
 			const data = await fetchCategories(country, category);
-			if (data) {
-				if (data.status === 'error') {
-					throw data.message;
-				}
-                setNews(data.articles);
-                swiper = new Swiper(slider.current, {
-                    slidesPerView: 3,
-                    spaceBetween: 20,
-                    loop: false,
-                    navigation: {
-                        nextEl: right.current,
-                        prevEl: left.current,
-                    },
-                });
+			if (data.message) {
+				return setMessage(data.message);
 			}
+			setNews(data.articles);
+            swiper = new Swiper(slider.current, {
+                slidesPerView: 3,
+                spaceBetween: 20,
+                loop: false,
+                navigation: {
+                    nextEl: right.current,
+                    prevEl: left.current,
+                },
+            });
         })();
         return () => {
             swiper && swiper.destroy(true, true);
@@ -54,19 +54,23 @@ function Category({category, country}) {
         <div className="category">
             <div className="container">
                 <p className="category__title">{getTitle()}</p>
-                <div className="category__slider">
-                    <button className="category__btn category__btn--left" type="button" ref={left}>
-                        <IconLeft />
-                    </button>
-                    <button className="category__btn category__btn--right" type="button" ref={right}>
-                        <IconRight />
-                    </button>
-                    <div className={`swiper-container category-swiper-${category}`} ref={slider}>
-                        <div className="swiper-wrapper">
-                            {getSlider()}
+                {
+                    message ?
+                        <p className="">{message}</p> :
+                        <div className="category__slider">
+                            <button className="category__btn category__btn--left" type="button" ref={left}>
+                                <IconLeft />
+                            </button>
+                            <button className="category__btn category__btn--right" type="button" ref={right}>
+                                <IconRight />
+                            </button>
+                            <div className={`swiper-container category-swiper-${category}`} ref={slider}>
+                                <div className="swiper-wrapper">
+                                    {getSlider()}
+                                </div>
+                            </div>
                         </div>
-                    </div>
-                </div>
+                }
             </div>
         </div>
     )

@@ -5,16 +5,19 @@ import './style.scss';
 
 function TopNews({ country }) {
 	const [newsData, setNewsData] = useState([]);
+	const [message, setMessage] = useState('');
+	const [isLoading, setIsLoading] = useState(false);
 
 	useEffect(() => {
 		(async () => {
+			if (!country) return;
+			setIsLoading(true);
 			const data = await fetchTopNews(country);
-			if (data) {
-				if (data.status === 'error') {
-					throw data.message;
-				}
-				setNewsData(data.articles);
+			setIsLoading(false);
+			if (data.message) {
+				return setMessage(data.message);
 			}
+			setNewsData(data.articles);
 		})();
 	}, [country]);
 
@@ -26,7 +29,11 @@ function TopNews({ country }) {
 		<div className="top-news">
 			<div className="container">
 				<h1 className="top-news__title">{getTitle()}</h1>
-				<NewsList news={newsData} />
+				{
+					message ?
+						<p>{message}</p> :
+						<NewsList news={newsData} showSpinner={isLoading} />
+				}
 			</div>
 		</div>
 	)
