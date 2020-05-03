@@ -1,11 +1,11 @@
 @import "../../styles/variables";
 
 .category {
-    // padding: 0 30px;
     margin-bottom: 50px;
 }
 
 .category__title {
+    display: block;
     font-size: 28px;
     margin-bottom: 20px;
 }

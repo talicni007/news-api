@@ -5,9 +5,9 @@ import './style.scss';
 function Categories({ country }) {
 	const categories = ['entertainment', 'general', 'health', 'science', 'sport', 'technology'];
 	return (
-		<div className="categories">
+		<div className="section categories">
 			<div className="container">
-				<h1 className="categories__title">Top 5 news by categories from {country}</h1>
+				<h1 className="section-title">Top 5 news by categories from {country}</h1>
 				<div className="categories__wrap">
 					{categories.map((cat, index) => <Category category={cat} country={country} key={index} />)}
 				</div>

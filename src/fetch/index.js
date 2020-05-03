@@ -1,4 +1,4 @@
-const API_KEY = '1e66b59bf8a64065beca0fcb0ab3ac62';
+const API_KEY = 'd7175a23418446b6b32e9bd71e8bb370';
 const BASE_URL =`https://newsapi.org/v2/top-headlines?apiKey=${API_KEY}&country=`;
 
 

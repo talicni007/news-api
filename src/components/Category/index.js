@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
+import { Link } from 'react-router-dom';
 import { fetchCategories } from '../../fetch';
 import { ReactComponent as IconLeft } from '../../icons/ico-left.svg';
 import { ReactComponent as IconRight } from '../../icons/ico-right.svg';
@@ -53,7 +54,10 @@ function Category({category, country}) {
     return (
         <div className="category">
             <div className="container">
-                <p className="category__title">{getTitle()}</p>
+                <Link className="category__title" to={{
+                    pathname:`categories/${category}`,
+                    state: {news}
+                }}>{getTitle()}</Link>
                 {
                     message ?
                         <p className="">{message}</p> :

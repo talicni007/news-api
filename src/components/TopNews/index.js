@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import NewsList from '../NewsList';
 import { fetchTopNews } from '../../fetch';
-import './style.scss';
 
 function TopNews({ country }) {
 	const [newsData, setNewsData] = useState([]);
@@ -26,9 +25,9 @@ function TopNews({ country }) {
 	}
 
 	return (
-		<div className="top-news">
+		<div className="section">
 			<div className="container">
-				<h1 className="top-news__title">{getTitle()}</h1>
+				<h1 className="section-title">{getTitle()}</h1>
 				{
 					message ?
 						<p>{message}</p> :
