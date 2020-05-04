@@ -26,13 +26,22 @@ function Category({category, country}) {
             setMessage('');
 			setNews(data.articles);
             swiper = new Swiper(slider.current, {
-                slidesPerView: 3,
-                spaceBetween: 20,
+                slidesPerView: 1,
                 loop: false,
                 navigation: {
                     nextEl: right.current,
                     prevEl: left.current,
                 },
+                breakpoints: {
+                    768: {
+                        slidesPerView: 3,
+                        spaceBetween: 20
+                    },
+                    500: {
+                        slidesPerView: 2,
+                        spaceBetween: 20
+                    }
+                }
             });
         })();
         return () => {

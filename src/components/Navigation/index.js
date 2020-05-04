@@ -4,6 +4,7 @@ import './style.scss';
 
 function Navigation({handleCountryChange, country}) {
     const [isSelectorDisabled, setIsSelectorDisabled] = useState(false);
+    const [selectorVisible, setSelectorVisible] = useState(false);
     const location = useLocation();
     const { pathname } = location;
 
@@ -27,7 +28,8 @@ function Navigation({handleCountryChange, country}) {
                     <NavLink to="/search" className="navigation__link" activeClassName="navigation__link--selected">Search</NavLink>
                 </li>
             </ul>
-            <div className="language-selector">
+            <button className="language-trigger" type="button" onClick={() => setSelectorVisible(!selectorVisible)}>Country</button>
+            <div className={`language-selector ${selectorVisible ? 'language-selector--visible' : ''}`}>
                 <button
                  className={`language-selector__btn ${country === 'gb' ? "language-selector__btn--selected" : ''}`}
                  type="button"

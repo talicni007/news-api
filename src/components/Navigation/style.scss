@@ -1,9 +1,19 @@
-@import "../../styles//variables";
+@import "../../styles/variables";
+
+body {
+    padding-top: 50px;
+}
 
 .navigation {
+    position: fixed;
+    z-index: 10;
+    top: 0;
+    left: 0;
+    width: 100%;
     display: flex;
     justify-content: space-between;
     border-bottom: 1px solid $gray;
+    background-color: $white;
 }
 
 .navigation__list,
@@ -11,6 +21,28 @@
     display: flex;
     align-items: center;
     height: 50px;
+}
+
+.language-selector {
+    @media only screen and (max-width: 500px) {
+        position: absolute;
+        right: 0;
+        top: 100%;
+        background-color: $white;
+        border: 1px solid $gray;
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity $trans;
+        * {
+            position: relative;
+            z-index: 1;
+        }
+
+        &--visible {
+            opacity: 1;
+            pointer-events: all;
+        }
+    }
 }
 
 .navigation__item {
@@ -56,6 +88,10 @@
             transform-origin: top;
         }
     }
+
+    @media only screen and (max-width: 768px) {
+        padding: 0 10px;
+    }
 }
 
 .language-selector__btn {
@@ -65,5 +101,13 @@
     &:disabled {
         pointer-events: none;
         background-color: $red;
+    }
+}
+
+.language-trigger {
+    padding-right: 10px;
+    cursor: pointer;
+    @media only screen and (min-width: 501px) {
+        display: none;
     }
 }
