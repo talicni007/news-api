@@ -14,6 +14,9 @@ const fetchBase = async (url) => {
             if (response.status === 'error') {
                 data.message = 'Sorry something went wrong on our end, please try again later.';
             }
+            if (!response.articles.length) {
+                data.message = 'No results found.';
+            }
             data.articles = response.articles;
         }
     } catch (e) {

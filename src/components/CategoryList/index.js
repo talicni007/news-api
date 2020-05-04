@@ -18,6 +18,7 @@ function CategoryList({ country }) {
         if (data.message) {
             return setMessage(data.message);
         }
+        setMessage('');
         setNews(data.articles);
     }, [country, category]);
 
@@ -35,7 +36,7 @@ function CategoryList({ country }) {
     return (
         <div className="section">
             <div className="container">
-                <h1 className="section-title">Top news for {category} from {country.toUpperCase()}</h1>
+                <h1 className="section-title">Top {category} news from {country === 'gb' ? 'Great Britain' : 'USA'}</h1>
                 {
                     message ?
                         <p>{message}</p> :

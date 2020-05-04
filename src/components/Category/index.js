@@ -22,7 +22,8 @@ function Category({category, country}) {
 			const data = await fetchCategories(country, category);
 			if (data.message) {
 				return setMessage(data.message);
-			}
+            }
+            setMessage('');
 			setNews(data.articles);
             swiper = new Swiper(slider.current, {
                 slidesPerView: 3,

@@ -16,6 +16,7 @@ function TopNews({ country }) {
 			if (data.message) {
 				return setMessage(data.message);
 			}
+			setMessage('');
 			setNewsData(data.articles);
 		})();
 	}, [country]);
