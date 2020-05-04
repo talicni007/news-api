@@ -1,50 +1,50 @@
 @import "../../styles/variables";
 
 .category {
-    margin-bottom: 50px;
+	margin-bottom: 50px;
 }
 
 .category__title {
-    display: block;
-    font-size: 28px;
-    margin-bottom: 20px;
+	display: block;
+	font-size: 28px;
+	margin-bottom: 20px;
 }
 
 .category__slider {
-    position: relative;
-    min-height: 200px;
+	position: relative;
+	min-height: 200px;
 }
 
 .swiper-wrapper {
-    box-sizing: inherit;
+	box-sizing: inherit;
 }
 
 .swiper-slide {
-    height: auto;
-    max-height: 100%;
-    .news-tile {
-        height: 100%;
-        margin-bottom: 0;
-    }
+	height: auto;
+	max-height: 100%;
+	.news-tile {
+		height: 100%;
+		margin-bottom: 0;
+	}
 }
 
 .category__btn {
-    width: 15px;
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    transition: color $trans;
-    cursor: pointer;
+	width: 15px;
+	position: absolute;
+	top: 50%;
+	transform: translateY(-50%);
+	transition: color $trans;
+	cursor: pointer;
 
-    &:hover {
-        color: $blue;
-    }
+	&:hover {
+		color: $blue;
+	}
 
-    &--right {
-        right: -35px;
-    }
+	&--right {
+		right: -35px;
+	}
 
-    &--left {
-        left: -35px;
-    }
+	&--left {
+		left: -35px;
+	}
 }
