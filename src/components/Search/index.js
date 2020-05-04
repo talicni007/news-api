@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import NewsList from '../NewsList';
 import { useLocation, useHistory } from 'react-router-dom';
 import { fetchSearch } from '../../fetch';
@@ -11,36 +11,34 @@ function Search({ country }) {
     const [isLoading, setIsLoading] = useState(false);
     const location = useLocation();
     const history = useHistory();
-    let timeout = 0;
+    const timeout = useRef(0);
 
     useEffect(() => {
         const { search } = location;
         if (!search || !country) return;
+        const fetchNews =  async (country, query) => {
+            setIsLoading(true);
+            const data = await fetchSearch(country, query);
+            setIsLoading(false);
+            if (!query) return;
+            if (data.message) {
+                return setMessage(data.message);
+            }
+            setMessage('');
+            setNews(data.articles);
+        }
         const searchTerm = decodeURI(search.substr(1));
         fetchNews(country, searchTerm);
-        setQuery(searchTerm);
-    }, [country]);
+    }, [country, location]);
+
+    useEffect(() => () => clearTimeout(timeout), []);
 
     const handleOnChange = (e) => {
         const searchText = e.target.value;
-        clearTimeout(timeout);
-        timeout = setTimeout(()=> fetchNews(country, searchText), 500);
         setQuery(searchText);
+        clearTimeout(timeout.current);
+        timeout.current = setTimeout(()=> history.push({search: searchText}), 500);
     }
-
-    const fetchNews =  async (country, query) => {
-        setIsLoading(true);
-        const data = await fetchSearch(country, query);
-        setIsLoading(false);
-        history.push({search: query});
-        if (!query) return;
-        if (data.message) {
-            return setMessage(data.message);
-        }
-        setMessage('');
-        setNews(data.articles);
-    }
-
 
     return (
         <div className="section search">
