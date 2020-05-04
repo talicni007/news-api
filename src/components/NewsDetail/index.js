@@ -1,5 +1,6 @@
 import React from 'react';
 import { Redirect, useHistory, useLocation } from 'react-router-dom';
+import { ReactComponent as IconLeft } from '../../icons/ico-left.svg';
 import './style.scss';
 
 function NewsDetail() {
@@ -16,7 +17,12 @@ function NewsDetail() {
 					<img src={news.urlToImage} alt={news.title} className="cover-img" />
 				</div>
 				<p className="news-detail__content">{news.content}</p>
-				<button className="news-detail__btn" type="button" onClick={() => history.goBack()}>Back to list</button>
+				<button className="news-detail__btn"
+					type="button"
+					onClick={() => history.goBack()}>
+						<IconLeft className="icon" />
+						Back to list
+				</button>
 			</div>
 		</div>
 	)

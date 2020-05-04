@@ -15,6 +15,10 @@
     min-height: 200px;
 }
 
+.swiper-wrapper {
+    box-sizing: inherit;
+}
+
 .swiper-slide {
     height: auto;
     max-height: 100%;
